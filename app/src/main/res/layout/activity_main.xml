@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:onClick="changeBackground1"
+            android:onClick="changeBackground"
             android:text="Button" />
 
         <Space

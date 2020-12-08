@@ -18,11 +18,9 @@ import android.widget.Toast;
 /**
  * The type Main activity.
  *
- *  @author		Itey Weintraub <av5350@bs.amalnet.k12.il>
- *  @version	1
- *  @since		1/12/2020
- *  short description:
- *      This activity let the user try 3 Alert Dialog's situations.
+ * @author Itey Weintraub <av5350@bs.amalnet.k12.il>
+ * @version 1
+ * @since 1 /12/2020  short description:      This activity let the user try 3 Alert Dialog's situations.
  */
 public class MainActivity extends AppCompatActivity {
     final String[] colors = {"Red", "Green", "Blue"};
@@ -38,7 +36,12 @@ public class MainActivity extends AppCompatActivity {
         layout = findViewById(R.id.layout);
     }
 
-    public void changeBackground1(View view) {
+    /**
+     * Change background to one of those colors: red / green / blue
+     *
+     * @param view the view
+     */
+    public void changeBackground(View view) {
         color = new int[]{0, 0, 0};
 
         adb = new AlertDialog.Builder(this);
@@ -63,6 +66,12 @@ public class MainActivity extends AppCompatActivity {
         ad.show();
     }
 
+    /**
+     * Show to user an multiply choice of colors
+     * any combination he clicks, its apply the layout background color
+     *
+     * @param view the view
+     */
     public void multiColorChange(View view) {
         color = new int[]{0, 0, 0};
 
@@ -95,11 +104,20 @@ public class MainActivity extends AppCompatActivity {
         ad.show();
     }
 
+    /**
+     * Rest layout background to white.
+     *
+     * @param view the view
+     */
     public void restBackground(View view) {
-        // rest the layout background to white
         layout.setBackgroundColor(0);
     }
 
+    /**
+     * Get an input from the user and show it with a Toast
+     *
+     * @param view the view
+     */
     public void inputDialog(View view) {
         adb = new AlertDialog.Builder(this);
         adb.setCancelable(false);
