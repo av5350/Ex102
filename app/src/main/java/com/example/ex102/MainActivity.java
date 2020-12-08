@@ -1,16 +1,29 @@
 package com.example.ex102;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+/**
+ * The type Main activity.
+ *
+ *  @author		Itey Weintraub <av5350@bs.amalnet.k12.il>
+ *  @version	1
+ *  @since		1/12/2020
+ *  short description:
+ *      This activity let the user try 3 Alert Dialog's situations.
+ */
 public class MainActivity extends AppCompatActivity {
     final String[] colors = {"Red", "Green", "Blue"};
     int[] color;
@@ -112,5 +125,37 @@ public class MainActivity extends AppCompatActivity {
 
         AlertDialog ad = adb.create();
         ad.show();
+    }
+
+    /**
+     * Create the options menu
+     *
+     * @param menu the menu
+     * @return ture if success
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    /**
+     * go to credits activity if it was clicked at the menu
+     *
+     * @param item the item in menu that was clicked
+     * @return true - if it success
+     */
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        String title = (String) item.getTitle();
+
+        // go to credits activity if clicked
+        if (title.equals("Creadits"))
+        {
+            Intent si = new Intent(this, CreaditsActivity.class);
+            startActivity(si);
+        }
+
+        return true;
     }
 }
