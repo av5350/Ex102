@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
+                dialog.dismiss();
             }
         });
 
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        adb.setNeutralButton("Apply", new DialogInterface.OnClickListener() {
+        adb.setPositiveButton("Apply", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 layout.setBackgroundColor(Color.rgb(color[0], color[1], color[2]));
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
+                dialog.dismiss();
             }
         });
 
@@ -134,10 +134,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        adb.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+        adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
+                dialog.dismiss();
             }
         });
 
@@ -175,5 +175,41 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    public void bunusEditTexts(View view) {
+        adb = new AlertDialog.Builder(this);
+        adb.setCancelable(false);
+        adb.setTitle("Try inputs!");
+
+        // list view
+        final LinearLayout bunusLayout = new LinearLayout(this);
+        bunusLayout.setOrientation(LinearLayout.HORIZONTAL);
+
+        // edit text 1
+        final EditText input1 = new EditText(this);
+        input1.setHint("Type text here");
+        bunusLayout.addView(input1);
+
+        // edit text 2
+        final EditText input2 = new EditText(this);
+        input2.setHint("Type text here");
+        bunusLayout.addView(input2);
+
+        adb.setView(bunusLayout);
+
+        adb.setPositiveButton("Apply", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String inputString1 = input1.getText().toString();
+                String inputString2 = input2.getText().toString();
+                Toast.makeText(MainActivity.this, inputString1 + inputString2, Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog ad = adb.create();
+        ad.show();
+
     }
 }
