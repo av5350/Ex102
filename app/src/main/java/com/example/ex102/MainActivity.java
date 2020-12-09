@@ -146,37 +146,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Create the options menu
+     * do the bunus - 2 edit texts in the alert dialog and toast them together
      *
-     * @param menu the menu
-     * @return ture if success
+     * @param view the View
+     * @return none
      */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    /**
-     * go to credits activity if it was clicked at the menu
-     *
-     * @param item the item in menu that was clicked
-     * @return true - if it success
-     */
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        String title = (String) item.getTitle();
-
-        // go to credits activity if clicked
-        if (title.equals("Creadits"))
-        {
-            Intent si = new Intent(this, CreaditsActivity.class);
-            startActivity(si);
-        }
-
-        return true;
-    }
-
     public void bunusEditTexts(View view) {
         adb = new AlertDialog.Builder(this);
         adb.setCancelable(false);
@@ -210,6 +184,37 @@ public class MainActivity extends AppCompatActivity {
 
         AlertDialog ad = adb.create();
         ad.show();
+    }
 
+    /**
+     * Create the options menu
+     *
+     * @param menu the menu
+     * @return ture if success
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    /**
+     * go to credits activity if it was clicked at the menu
+     *
+     * @param item the item in menu that was clicked
+     * @return true - if it success
+     */
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        String title = (String) item.getTitle();
+
+        // go to credits activity if clicked
+        if (title.equals("Creadits"))
+        {
+            Intent si = new Intent(this, CreaditsActivity.class);
+            startActivity(si);
+        }
+
+        return true;
     }
 }
